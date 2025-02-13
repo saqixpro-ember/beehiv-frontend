@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const email = params.get("email");
   const bhlid = params.get("_bhlid");
+  const publicationId = params.get("publication_id");
 
   // Validate that the email parameter exists.
   if (!email) {
@@ -15,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Construct the Cloud Run URL with query parameters.
   let cloudRunUrl = `https://newsletter-service-147667145983.us-central1.run.app/unsubscribe?email=${encodeURIComponent(
     email
-  )}`;
+  )}&publication_id=${publicationId}`;
   if (bhlid) {
     cloudRunUrl += `&_bhlid=${encodeURIComponent(bhlid)}`;
   }
