@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Make the API request to the FastAPI server.
-  fetch(cloudRunUrl).then(() => {
+  fetch(cloudRunUrl, { method: "GET" }).then(() => {
     document.getElementById("spinner").style.display = "none";
     document.getElementById("status-text").textContent =
       "You are unsubscribed.";
