@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Make the API request to the FastAPI server.
   fetch(cloudRunUrl)
     .then((response) => {
-      if (!response.ok) {
+      if (response.status !== 200) {
         throw new Error("Network response was not ok: " + response.statusText);
       }
       return response.json();
