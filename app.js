@@ -22,7 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Make the API request to the FastAPI server.
-  fetch(cloudRunUrl)
+  fetch(cloudRunUrl, {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  })
     .then((response) => {
       return response.json();
     })
