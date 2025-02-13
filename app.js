@@ -24,33 +24,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // Make the API request to the FastAPI server.
   fetch(cloudRunUrl)
     .then((response) => {
-      if (response.status !== 200) {
-        throw new Error("Network response was not ok: " + response.statusText);
-      }
       return response.json();
     })
-    .then((data) => {
-      // Hide the spinner once the response is received.
+    .then(() => {
       document.getElementById("spinner").style.display = "none";
-
-      // Display appropriate message based on the response.
-      if (data.error) {
-        document.getElementById("status-text").textContent =
-          "Error: " + data.error;
-      } else {
-        document.getElementById("status-text").textContent =
-          "You are unsubscribed.";
-      }
-
-      // Start the redirection countdown.
+      document.getElementById("status-text").textContent =
+        "You are unsubscribed.";
       startCountdown(15);
     })
     .catch((error) => {
-      // Hide the spinner and show error message.
       document.getElementById("spinner").style.display = "none";
       document.getElementById("status-text").textContent =
         "Error: " + error.message;
-      // Start the redirection countdown even on error.
       startCountdown(15);
     });
 });
