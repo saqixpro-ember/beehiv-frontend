@@ -28,9 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
       "Content-Type": "application/json",
     },
   })
-    .then((response) => {
-      return response.json();
-    })
     .then(() => {
       document.getElementById("spinner").style.display = "none";
       document.getElementById("status-text").textContent =
