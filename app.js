@@ -35,13 +35,13 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("spinner").style.display = "none";
       document.getElementById("status-text").textContent =
         "You are unsubscribed.";
-      startCountdown(15);
+      startCountdown();
     })
     .catch((error) => {
       document.getElementById("spinner").style.display = "none";
       document.getElementById("status-text").textContent =
         "Error: " + error.message;
-      startCountdown(15);
+      startCountdown();
     });
 });
 
@@ -50,18 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
  *
  * @param {number} seconds - The number of seconds to count down.
  */
-function startCountdown(seconds) {
-  let counter = seconds;
+function startCountdown() {
   const countdownEl = document.getElementById("countdown");
   countdownEl.style.display = "block";
-  countdownEl.textContent = `Redirecting in ${counter} seconds...`;
-
-  const interval = setInterval(() => {
-    counter--;
-    countdownEl.textContent = `Redirecting in ${counter} seconds...`;
-    if (counter <= 0) {
-      clearInterval(interval);
-      window.location.href = "https://beehiv.com";
-    }
-  }, 1000);
+  countdownEl.textContent = `You may close this window`;
 }
